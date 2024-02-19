@@ -1,0 +1,42 @@
+<!-- In parse/templates/parse/document_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document List</title>
+</head>
+<body>
+    <h1>Document List</h1>
+    <ul>
+{% comment %} 
+        {% for text_content in text_contents %}
+    <p>{{ text_content }}</p>
+     {% endfor %} {% endcomment %}
+
+        {% comment %} {% for document in documents %}
+            <li>
+                 <a href="{{ document.uploaded_file.url }}">{{ document.uploaded_file.name }}</a> 
+                 <p>Text Content: {{ document.text_content }}</p> 
+                 <p>JSON Data: {{ document.json_data }}</p> 
+                 <p>Primary Key: {{ document.pk }}</p>
+
+             </li> 
+        {% endfor %} {% endcomment %}
+        
+        <ul>
+            {% for document, similarity_score in combined_data %}
+            <li>
+                <p>Document ID: {{ document.pk }}</p>
+                <p>Similarity Score: {{ similarity_score }}</p>
+                {% comment %} <p>Text Content: {{ document.text_content }}</p> {% endcomment %}
+                {% comment %} <iframe src="{{ pdf_file.file.url }}" width="100%" height="500px" frameborder="0"></iframe> {% endcomment %}
+                <a href="{{ document.file.url }}" target="_blank">{{ document.uploaded_file.name }}</a>
+                
+            </li>
+            {% endfor %}
+        </ul>
+    </ul> 
+    </ul> 
+</body>
+</html>

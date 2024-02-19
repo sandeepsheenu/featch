@@ -1,0 +1,16 @@
+<!-- In parse/templates/parse/upload_documents.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Documents</title>
+</head>
+<body>
+    <h1>Upload Documents</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
